@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $("#${p.id}").click(function () {
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+<a id="wow" href="https://google.com/" onclick="alertme(); return false;">Click to see how this works.</a>
+<div th:each="p : ${person}">
+    <p th:text="${p.name}"></p>
+    <p th:text="${p.surname}"></p>
+
+    <a th:id="${p.id}" th:href="@{'/person/delete/' + ${p.id}}" th:text="REMOVE"></a>
+    <hr>
+</div>
+</body>
+</html>
